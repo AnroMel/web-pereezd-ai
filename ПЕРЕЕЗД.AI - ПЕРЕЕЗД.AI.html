@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ПЕРЕЕЗД.AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- IBM Plex Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #f2f2f5;
+            --primary: #2148c0;
+            --primary-dark: #17369a;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --border-soft: #e5e7eb;
+            --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.12);
+            --radius-lg: 16px;
+            --radius-xl: 22px;
+            --transition-fast: 0.2s ease;
+            --container-width: 1120px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text-main);
+            background: var(--bg);
+            scroll-behavior: smooth;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none; /* убрали подчёркивание при hover */
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin: 0 0 18px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        p {
+            margin: 0 0 10px;
+            line-height: 1.55;
+        }
+
+        /* АНИМАЦИЯ ПОЯВЛЕНИЯ */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal_visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* HEADER */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: #111827;
+            color: #f9fafb;
+        }
+
+        .header__top-bar {
+            font-size: 13px;
+            padding: 6px 20px;
+            text-align: right;
+        }
+
+        .header__nav-wrap {
+            background: rgba(17, 24, 39, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            padding: 20px 20px;
+            position: relative;
+        }
+
+        .header__logo {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.08em;
+        }
+
+        .header__logo span {
+            color: #E21A1A;
+        }
+
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .header__nav a {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #e5e7eb;
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        .header__nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width var(--transition-fast);
+        }
+
+        .header__nav a:hover::after,
+        .header__nav a.is-active::after {
+            width: 100%;
+        }
+
+        .header__burger {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            border-radius: 999px;
+            border: 1px solid rgba(249, 250, 251, 0.4);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .header__burger-line {
+            width: 18px;
+            height: 2px;
+            border-radius: 999px;
+            background: #f9fafb;
+            position: relative;
+        }
+
+        .header__burger-line::before,
+        .header__burger-line::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 18px;
+            height: 2px;
+            border-radius: 999px;
+            background: #f9fafb;
+            transition: transform 0.18s ease, top 0.18s ease, opacity 0.18s ease;
+        }
+
+        .header__burger-line::before {
+            top: -6px;
+        }
+
+        .header__burger-line::after {
+            top: 6px;
+        }
+
+        .header__burger.is-open .header__burger-line {
+            background: transparent;
+        }
+
+        .header__burger.is-open .header__burger-line::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .header__burger.is-open .header__burger-line::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+
+        /* HERO */
+
+        .hero {
+            background: url("media/ground.png") center/cover no-repeat;
+            padding: 80px 0 130px;
+            position: relative;
+            color: #111827;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.6));
+        }
+
+        .hero__inner {
+            position: relative;
+        }
+
+        .hero__card-main {
+            margin: 0 auto;
+            max-width: 520px;
+            background: #ffffff;
+            border-radius: var(--radius-xl);
+            padding: 28px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero__title {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .hero__subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .hero__about {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+        }
+
+        .hero__about-img {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero__about-img,
+        .hero__about-card {
+            height: 100%;             /* Позволяет занять полную высоту секции */
+        }
+
+        .hero__about-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero__about-title {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 14px;
+        }
+
+        .hero__about-text {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* SAFETY SECTION */
+
+        .section-gray {
+            background: #e5e7eb; 
+        }
+
+        .safety {
+            position: relative;
+            overflow: hidden;
+            background: url("media/right.png") no-repeat / contain;
+        }
+
+        .safety::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.18;
+            pointer-events: none;
+        }
+
+        .safety > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .safety__title {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .safety__list {
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 14px;
+            color: #1f2933;
+            font-weight: 500;
+        }
+
+        .safety__list p {
+            margin-bottom: 4px;
+        }
+
+        .safety__list span {
+            font-weight: 900;
+        }
+
+        #safety {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #safety::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            /* Фон */
+            background-image: url("media/right.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+
+            /* Полупрозрачность */
+            opacity: 0.25;
+
+            /* Параллакс */
+            background-attachment: fixed;
+
+            /* Чтобы фон был под контентом */
+            z-index: 0;
+        }
+
+        #safety > * {
+            position: relative;
+            z-index: 1;
+        }
+
+
+        /* PRECONDITIONS */
+
+        .section-center {
+            text-align: center;
+        }
+
+        .section-center > p {
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-muted);
+        }
+
+        .preconditions__grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 24px;
+            max-width: 760px;
+            margin: 40px auto 0;
+        }
+
+        .preconditions__item {
+            display: grid;
+            grid-template-columns: 60px minmax(0, 1fr);
+            gap: 18px;
+            align-items: flex-start;
+        }
+
+        .icon-square {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: #e0ebff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-square img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        .preconditions__item-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            text-align: left;
+        }
+
+        .preconditions__item-text {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: left;
+        }
+
+        /* SERVICES */
+
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            text-align: center;
+        }
+
+        .service-card__thumb-wrap {
+            width: 104px;
+            height: 104px;
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 0 auto 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .service-card__thumb-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-card__title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .service-card__text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* OPERATOR APP */
+
+        .operator__wrap {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .operator__title {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            letter-spacing: 0.08em;
+        }
+
+        .operator__text {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .operator__video-card {
+            border-radius: 18px;
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            background: #020617;
+        }
+
+        .operator__video-card video {
+            width: 100%;
+            display: block;
+        }
+
+        .operator__video-placeholder {
+            padding: 40px;
+            text-align: center;
+            color: #e5e7eb;
+            font-size: 14px;
+        }
+
+        /* CONTACT */
+
+        .contact__wrap {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .contact__title {
+            margin-bottom: 6px;
+        }
+
+        .contact__address {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .contact__list {
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .contact__list p {
+            margin-bottom: 4px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 999px;
+            background: #111827;
+            color: #f9fafb;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .social-link img {
+            filter: invert();
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(33, 72, 192, 0.4);
+        }
+
+        .contact-form {
+            background: #f9fafb;
+            border-radius: var(--radius-lg);
+            padding: 24px 26px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-form__row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        .contact-form__group {
+            margin-bottom: 14px;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+            color: #6b7280;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            border-radius: 9px;
+            border: 1px solid var(--border-soft);
+            padding: 9px 10px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+            font-family: inherit;
+            resize: vertical;
+            min-height: 40px;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1px rgba(33, 72, 192, 0.25);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 22px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+            background: var(--primary);
+            color: #f9fafb;
+            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 10px 25px rgba(33, 72, 192, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .contact-form__footer {
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        /* TEAM */
+
+        .team__grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            text-align: center;
+        }
+        
+        #preconditions {
+            background-color: #f9f9f9;
+        }
+
+        #operator-app {
+            background-color: #f9f9f9;
+        }
+
+        .team-card__avatar-wrap {
+            width: 140px;
+            height: 140px;
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 0 auto 14px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-card__avatar-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-card__name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .team-card__role {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 3px;
+        }
+
+        .team-card__tg {
+            font-size: 13px;
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .team-card__tg img {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            padding: 26px 0 20px;
+            background: #111827;
+            color: #9ca3af;
+            font-size: 12px;
+        }
+
+        .footer__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer__left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer__nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .footer__nav a {
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            color: #d1d5db;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-left: 12px;
+        }
+
+        .footer__social-label {
+            margin-right: 6px;
+        }
+        
+        .safety__list span {
+            color: #2148C0;
+        }
+
+        .operator__video-frame {
+            position: relative;
+            width: 100%;
+            max-width: 620px; /* по макету можешь менять */
+            margin: 0 auto;
+        }
+
+        .operator-frame-img {
+            width: 100%;
+            display: block;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* ВИДЕО ПОМЕЩАЕТСЯ В ПРОЗРАЧНУЮ ОБЛАСТЬ ledtop.png */
+        .operator-video {
+            position: absolute;
+            top: 14.5%;      /* подстройка под отверстие */
+            left: 11.2%;
+            width: 77.2%;    /* размер области экрана в макете */
+            height: 73%;     /* адаптивная подгонка */
+            border-radius: 8px;
+            background: #000;
+            object-fit: cover;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1024px) {
+            section {
+                padding: 64px 0;
+            }
+
+            .hero__about {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .hero__about-img,
+            .hero__about-card {
+                width: 100%;
+            }
+
+            .hero__about-img img {
+                width: 100%;
+                height: auto;
+                display: block;
+                object-fit: cover;
+                height: 400px;
+            }
+
+            .operator__wrap {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .contact__wrap {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            
+            .container {
+                padding: 20px 50px
+            }
+        }
+        
+
+        @media (max-width: 970px) {
+            .header__nav {
+                position: absolute;
+                inset-inline: 0;
+                top: 100%;
+                background: #111827;
+                flex-direction: column;
+                padding: 12px 20px 16px;
+                border-bottom: 1px solid rgba(55, 65, 81, 0.8);
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                pointer-events: none;
+                gap: 10px;
+            }
+
+            .header__nav.is-open {
+                max-height: 220px;
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .header__burger {
+                display: inline-flex;
+            }
+
+            .hero {
+                padding: 72px 0 110px;
+            }
+
+            .hero__card-main {
+                padding: 22px 20px;
+            }
+
+            .footer__inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            .services__grid,
+            .team__grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+                justify-items: center;    /* центрирует одиночный элемент */
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .services__grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .team__grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding-inline: 16px;
+            }
+
+            .contact-form__row {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            .hero__title {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector(".operator-video");
+
+    if (!video) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    }, {
+        threshold: 0.5  // 50% блока должно быть в кадре
+    });
+
+    observer.observe(video);
+});
+</script>
+
+<body>
+
+<header class="header" id="top">
+    <div class="header__nav-wrap">
+        <div class="container header__inner">
+            <div class="header__logo">ПЕРЕЕЗД<span>.AI</span></div>
+
+            <nav class="header__nav" id="main-nav">
+                <a href="#top" class="is-active">Главная</a>
+                <a href="#about">О нас</a>
+                <a href="#preconditions">Предпосылки</a>
+                <a href="#services">Услуги</a>
+                <a href="#contact">Контакт</a>
+            </nav>
+
+            <button class="header__burger" type="button" id="burger" aria-label="Открыть навигацию">
+                <span class="header__burger-line"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero__inner">
+            <div class="hero__card-main reveal">
+                <h1 class="hero__title">ПЕРЕЕЗД.AI</h1>
+                <p class="hero__subtitle">
+                    ИИ-контроль железнодорожных переездов в&nbsp;реальном времени
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT (отдельная секция сразу после hero) -->
+    <section id="about">
+        <div class="container">
+            <div class="hero__about">
+                <div class="hero__about-img reveal">
+                    <img src="media/left.png" alt="Железнодорожный переезд">
+                </div>
+                <article class="hero__about-card reveal">
+                    <h2 class="hero__about-title">О ПЕРЕЕЗД.AI</h2>
+                    <p class="hero__about-text">
+                        ПЕРЕЕЗД.AI&nbsp;&mdash; интеллектуальная система видеонаблюдения, разработанная
+                        для повышения безопасности на&nbsp;железнодорожных переездах.
+                        Алгоритмы компьютерного зрения анализируют дорожную обстановку,
+                        выявляют опасные сценарии и&nbsp;предупреждают оператора и&nbsp;водителей
+                        задолго до&nbsp;возникновения аварийной ситуации.
+                    </p>
+                    <p class="hero__about-text">
+                        Система масштабируется под любую инфраструктуру и&nbsp;интегрируется
+                        с&nbsp;существующими средствами мониторинга.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SAFETY -->
+    <section class="section-gray safety" id="safety">
+        <div class="container">
+            <h2 class="safety__title reveal">Повышение безопасности</h2>
+            <div class="safety__list reveal">
+                <p><span>Блокировка на путях:</span> обнаружение автомобилей, застрявших между шлагбаумами.</p>
+                <p><span>Игнорирование скоростного режима:</span> фиксация ТС, не&nbsp;снижающих скорость.</p>
+                <p><span>Опасное маневрирование:</span> объезд шлагбаума, выезд на&nbsp;встречную полосу.</p>
+                <p><span>Небезопасная остановка:</span> остановка ТС в&nbsp;опасных зонах обзора машиниста.</p>
+                <p><span>Проезд на запрещающий сигнал:</span> контроль нарушений светофора и&nbsp;шлагбаума.</p>
+                <p><span>Пересечение путей пешеходами:</span> мониторинг площадок и&nbsp;динамики движения людей.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRECONDITIONS -->
+    <section id="preconditions">
+        <div class="container section-center">
+            <h2 class="reveal">Предпосылки</h2>
+            <p class="reveal">
+                Железнодорожные переезды остаются одной из&nbsp;наиболее аварийно-опасных зон дорожной сети.
+                Наше решение анализирует реальные причины инцидентов и&nbsp;предлагает инструмент
+                для их&nbsp;предотвращения.
+            </p>
+
+            <div class="preconditions__grid">
+                <div class="preconditions__item reveal">
+                    <div class="icon-square">
+                        <img src="media/akar-icons_statistic-up.svg" alt="Статистика">
+                    </div>
+                    <div>
+                        <div class="preconditions__item-title">
+                            Аварии на переездах&nbsp;&mdash; десятки погибших ежегодно
+                        </div>
+                        <div class="preconditions__item-text">
+                            Столкновения поездов и&nbsp;автотранспорта приводят к&nbsp;тяжёлым последствиям
+                            и&nbsp;полной остановке движения. Своевременное оповещение позволяет снизить
+                            вероятность аварии.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preconditions__item reveal">
+                    <div class="icon-square">
+                        <img src="media/mingcute_camera-fill.svg" alt="Камера">
+                    </div>
+                    <div>
+                        <div class="preconditions__item-title">
+                            Видеонаблюдение без аналитики фиксирует аварию, а не предотвращает её
+                        </div>
+                        <div class="preconditions__item-text">
+                            Обычные камеры лишь записывают происходящее. ПЕРЕЕЗД.AI работает как
+                            помощник оператора: самостоятельно анализирует видеопоток
+                            и&nbsp;выделяет опасные события в&nbsp;режиме реального времени.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preconditions__item reveal">
+                    <div class="icon-square">
+                        <img src="media/icon-park-outline_road-sign-both.svg" alt="Дорожный знак">
+                    </div>
+                    <div>
+                        <div class="preconditions__item-title">
+                            Водители систематически игнорируют сигналы и шлагбаумы
+                        </div>
+                        <div class="preconditions__item-text">
+                            Система автоматически фиксирует нарушения и&nbsp;позволяет вести статистику
+                            по&nbsp;каждому переезду, выявляя &laquo;проблемные&raquo; участки и&nbsp;повышая
+                            дисциплину участников движения.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+        <div class="container section-center">
+            <h2 class="reveal">Услуги</h2>
+            <p class="reveal">ПЕРЕЕЗД.AI&nbsp;может быть внедрён как на&nbsp;отдельном переезде, так и&nbsp;на&nbsp;целой сети объектов.</p>
+
+            <div class="services__grid">
+                <article class="service-card reveal">
+                    <div class="service-card__thumb-wrap">
+                        <img src="media/a0.jpg" alt="Уведомления">
+                    </div>
+                    <div class="service-card__title">Уведомления в реальном времени</div>
+                    <div class="service-card__text">
+                        Операторы и&nbsp;ответственные службы получают мгновенные оповещения
+                        при обнаружении опасной ситуации.
+                    </div>
+                </article>
+
+                <article class="service-card reveal">
+                    <div class="service-card__thumb-wrap">
+                        <img src="media/a1.png" alt="Нейросети">
+                    </div>
+                    <div class="service-card__title">Использование нейросетей</div>
+                    <div class="service-card__text">
+                        Современные модели компьютерного зрения выявляют сложные сценарии поведения
+                        транспорта и&nbsp;пешеходов.
+                    </div>
+                </article>
+
+                <article class="service-card reveal">
+                    <div class="service-card__thumb-wrap">
+                        <img src="media/a2.png" alt="Инфраструктура">
+                    </div>
+                    <div class="service-card__title">Простая установка</div>
+                    <div class="service-card__text">
+                        Система интегрируется с&nbsp;существующей инфраструктурой и&nbsp;может
+                        использовать уже установленные камеры.
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPERATOR APP -->
+    <section id="operator-app">
+        <div class="container">
+            <div class="operator__wrap">
+                <div class="reveal">
+                    <h2 class="operator__title">Приложение оператора</h2>
+                    <p class="operator__text">
+                        Приложение предоставляет оператору единое окно для контроля ситуации
+                        на&nbsp;переездах: актуальные видеопотоки, журнал событий, подтверждение
+                        реакции и&nbsp;статистику по&nbsp;каждому объекту.
+                    </p>
+                    <p class="operator__text">
+                        Интерфейс разработан с&nbsp;учётом принципов эргономики: выводятся только
+                        важные уведомления, поддерживаются горячие клавиши и&nbsp;разные сценарии
+                        взаимодействия с&nbsp;дежурными службами.
+                    </p>
+                </div>
+
+                <div class="operator__video-frame reveal">
+                    <img src="media/ledtop.png" alt="" class="operator-frame-img">
+
+                    <video class="operator-video" muted playsinline preload="metadata" loop>
+                        <source src="media/video.mp4" type="video/mp4">
+                        <div class="operator__video-placeholder">
+                            Ваш браузер не поддерживает тег <code>video</code>.
+                        </div>
+                    </video>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact__wrap">
+                <div class="reveal">
+                    <h2 class="contact__title">Контакт</h2>
+                    <div class="contact__address">
+                        Ярославль, Россия<br>
+                        Пн–Пт: 10:00–18:00
+                    </div>
+
+                    <div class="contact__list">
+                        <p><strong>Телефон:</strong> <a href="tel:+79999999999">+7 (996) 239 74 77</a></p>
+                        <p><strong>Эл. почта:</strong> <a href="mailto:info@pereezd.ai">pereezd_ai@bk.ru</a></p>
+                    </div>
+
+                    <div>
+                        <p style="margin-bottom: 6px;"><strong>Мы в социальных сетях:</strong></p>
+                        <div class="social-links">
+                            <a class="social-link"
+                               href="https://t.me/pereezd_ai"
+                               target="_blank" rel="noopener noreferrer"
+                               aria-label="Telegram ПЕРЕЕЗД.AI">
+                                <img src="media/telegram.svg" alt="Telegram">
+                            </a>
+                            <a class="social-link"
+                               href="https://vk.com/pereezdai?from=groups"
+                               target="_blank" rel="noopener noreferrer"
+                               aria-label="ВКонтакте ПЕРЕЕЗД.AI">
+                                <img src="media/vk.svg" alt="VK">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form reveal" id="contact-form" action="https://formspree.io/f/xyzvegby" method="POST">
+                    <div class="contact-form__row">
+                        <div class="contact-form__group">
+                            <label for="name">Полное имя</label>
+                            <input id="name" name="name" type="text" required>
+                        </div>
+                        <div class="contact-form__group">
+                            <label for="phone">Телефон</label>
+                            <input id="phone" name="phone" type="tel">
+                        </div>
+                    </div>
+
+                    <div class="contact-form__group">
+                        <label for="email">Адрес электронной почты</label>
+                        <input id="email" name="email" type="email" required>
+                    </div>
+
+                    <div class="contact-form__group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+
+                    <div class="contact-form__footer">
+                        <button class="btn" type="submit">Запросить коммерческое предложение</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team">
+        <div class="container section-center">
+            <h2 class="reveal">Команда</h2>
+
+            <div class="team__grid">
+                <article class="team-card reveal">
+                    <div class="team-card__avatar-wrap">
+                        <img src="media/1.jpg" alt="Андрей Мельниченко">
+                    </div>
+                    <div class="team-card__name">Андрей Мельниченко</div>
+                    <div class="team-card__role">руководитель проекта<br>менеджер · дизайнер</div>
+                    <div class="team-card__tg">
+                        <img src="media/telegram.svg" alt="Telegram">
+                        <span><a href="https://t.me/Anro_m" target="_blank">@Anro_m</a></span>
+                    </div>
+                </article>
+
+                <article class="team-card reveal">
+                    <div class="team-card__avatar-wrap">
+                        <img src="media/2.jpg" alt="Кириллова Варвара">
+                    </div>
+                    <div class="team-card__name">Кирьянова Варвара</div>
+                    <div class="team-card__role">разработчик · дизайнер</div>
+                    <div class="team-card__tg">
+                        <img src="media/telegram.svg" alt="Telegram">
+                        <span><a href="https://t.me/actualchildlike" target="_blank">@actualchildlike</a></span>
+                    </div>
+                </article>
+
+                <article class="team-card reveal">
+                    <div class="team-card__avatar-wrap">
+                        <img src="media/3.jpg" alt="Гуляев Владислав">
+                    </div>
+                    <div class="team-card__name">Гуляев Владислав</div>
+                    <div class="team-card__role">ML · CV разработчик</div>
+                    <div class="team-card__tg">
+                        <img src="media/telegram.svg" alt="Telegram">
+                        <span><a href="https://t.me/vlad_g07" target="_blank">@vlad_g07</a></span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer__inner">
+        <div class="footer__left">
+            <div>ПЕРЕЕЗД.AI</div>
+            <div>Авторские права &copy; 2025&nbsp;&mdash; наст. время</div>
+        </div>
+
+        <nav class="footer__nav">
+            <a href="#top">Главная</a>
+            <a href="#about">О нас</a>
+            <a href="#preconditions">Предпосылки</a>
+            <a href="#services">Услуги</a>
+            <a href="#contact">Контакт</a>
+
+            <div class="footer__social">
+                <a class="social-link"
+                   href="https://t.me/pereezd_ai"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="Telegram ПЕРЕЕЗД.AI">
+                    <img src="media/telegram.svg" alt="Telegram">
+                </a>
+                <a class="social-link"
+                   href="https://vk.com/pereezdai?from=groups"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="ВКонтакте ПЕРЕЕЗД.AI">
+                    <img src="media/vk.svg" alt="VK">
+                </a>
+            </div>
+        </nav>
+    </div>
+</footer>
+
+<script>
+    // Бургер-меню на мобильных (до 970px)
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('main-nav');
+
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('is-open');
+        nav.classList.toggle('is-open');
+    });
+
+    // Плавный скролл по якорям
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+            if (!target) return;
+
+            e.preventDefault();
+
+            const headerOffset = 80;
+            const rect = target.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const offsetTop = rect.top + scrollTop - headerOffset;
+
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+
+            // закрытие меню на мобильном
+            if (burger.classList.contains('is-open')) {
+                burger.classList.remove('is-open');
+                nav.classList.remove('is-open');
+            }
+        });
+    });
+
+    // Обновление активного пункта в шапке при скролле
+    const sections = ['top', 'about', 'preconditions', 'services', 'contact']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+    function updateActiveNav() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        let currentId = 'top';
+
+        sections.forEach(section => {
+            const offsetTop = section.offsetTop - 120;
+            if (scrollY >= offsetTop) currentId = section.id;
+        });
+
+        document.querySelectorAll('.header__nav a').forEach(link => {
+            const hrefId = link.getAttribute('href').substring(1);
+            link.classList.toggle('is-active', hrefId === currentId);
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('load', updateActiveNav);
+
+    // Анимация появления элементов при прокрутке
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal_visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+    } else {
+        // Фолбэк: сразу показываем все элементы
+        revealElements.forEach(el => el.classList.add('reveal_visible'));
+    }
+</script>
+
+</body>
+</html>
