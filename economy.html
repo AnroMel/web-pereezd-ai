@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Экономика — ПЕРЕЕЗД.AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="economy.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header__nav-wrap">
+        <div class="container header__inner">
+            <div class="header__logo">ПЕРЕЕЗД<span>.AI</span></div>
+
+            <nav class="header__nav" id="main-nav">
+                <a href="index.html#top">Главная</a>
+                <a href="index.html#about">О нас</a>
+                <a href="index.html#preconditions">Предпосылки</a>
+                <a href="index.html#services">Услуги</a>
+                <a href="index.html#contact">Контакт</a>
+                <a href="economy.html" class="is-active">Экономика</a>
+            </nav>
+
+            <button class="header__burger" type="button" id="burger" aria-label="Открыть навигацию">
+                <span class="header__burger-line"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- БЛОК 1. ЧТО ПРОДАЕМ -->
+    <section id="economy-products" class="economy-section">
+        <div class="container section-center">
+            <h2 class="reveal">Что продаем</h2>
+
+            <div class="economy-products">
+                <article class="economy-product-card reveal">
+                    <div class="economy-product-thumb">
+                        <img src="media/comp.png" alt="Модуль видеоаналитики">
+                    </div>
+                    <h3 class="economy-product-title">Установка модуля</h3>
+                    <p class="economy-product-text">
+                        Под ключ подключаем и настраиваем модуль видеоаналитики на&nbsp;вашем
+                        переезде: мини-ПК, ПО и&nbsp;базовые сценарии триггеров. Обеспечиваем
+                        тестовый запуск и&nbsp;обучение персонала работе с&nbsp;системой
+                    </p>
+                    <div class="product-card__price">35 000 ₽</div>
+                </article>
+
+                <article class="economy-product-card reveal">
+                    <div class="economy-product-thumb">
+                        <img src="media/neiro.png" alt="Подписка на нейроассистента">
+                    </div>
+                    <h3 class="economy-product-title">Подписка на нейроассистента</h3>
+                    <p class="economy-product-text">
+                        Нейроассистент круглосуточно анализирует поток с&nbsp;камер, фиксирует
+                        опасные ситуации и&nbsp;формирует удобные отчёты для операторов.
+                        В&nbsp;подписку входят обновления моделей, поддержка и&nbsp;развитие
+                        функциональности
+                    </p>
+                    <div class="product-card__price">4 000 ₽ / месяц</div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 2. ИЗДЕРЖКИ ГОДОВЫЕ (1-Й РАУНД / 2026) -->
+    <section id="economy-annual-costs" class="economy-section">
+        <div class="container-wide">
+            <div class="section-center">
+                <h2 class="reveal">Инвестиции и годовые издержки <span class="nowrap">(1-й раунд)</span></h2>
+                <p class="economy-section-lead reveal">
+                    Первый год проекта включает стартовые инвестиции в команду, разработку,
+                    юридическое оформление и запуск маркетинга. Ниже представлена детализация
+                    расходов по статьям
+                </p>
+            </div>
+            <!-- === ЭКОНОМИЧЕСКАЯ ТАБЛИЦА 2026 === -->
+            <div class="economy-table-wrapper reveal">
+                <table class="economy-table">
+                    <thead>
+                        <tr>
+                            <th>Категория</th>
+                            <th>Статья</th>
+                            <th class="m-hide">Янв</th>
+                            <th class="m-hide">Фев</th>
+                            <th class="m-hide">Мар</th>
+                            <th class="m-hide">Апр</th>
+                            <th class="m-hide">Май</th>
+                            <th class="m-hide">Июн</th>
+                            <th class="m-hide">Июл</th>
+                            <th class="m-hide">Авг</th>
+                            <th class="m-hide">Сен</th>
+                            <th class="m-hide">Окт</th>
+                            <th class="m-hide">Ноя</th>
+                            <th class="m-hide">Дек</th>
+                            <th>Итого</th>
+                            <th>%</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <!-- === КОМАНДА === -->
+                        <tr class="cat-row">
+                            <td colspan="16">Команда</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Владелец / Основатель</td>
+                            <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                            <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                            <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                            <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                            <td>120 000</td><td>11%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Управляющий / Маркетолог</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide">13000</td><td class="m-hide">13000</td><td class="m-hide">13000</td>
+                            <td class="m-hide">13000</td><td class="m-hide">13000</td><td class="m-hide">13000</td>
+                            <td>65 000</td><td>6%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Backend-разработчик (аутсорс)</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide">80000</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td>80 000</td><td>8%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Frontend-разработчик (аутсорс)</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide">70000</td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td>70 000</td><td>7%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>UI/UX-дизайнер</td>
+                            <td class="m-hide">12500</td><td class="m-hide">12500</td><td class="m-hide">12500</td>
+                            <td class="m-hide">12500</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                            <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                            <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                            <td>90 000</td><td>9%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>ML-специалист</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide">80000</td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td>80 000</td><td>8%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Юрист</td>
+                            <td class="m-hide">16000</td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide">12000</td>
+                            <td class="m-hide">12000</td><td class="m-hide">12000</td><td class="m-hide"></td>
+                            <td>52 000</td><td>5%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Бухгалтер (аутсорс)</td>
+                            <td class="m-hide">6000</td><td class="m-hide">6000</td><td class="m-hide">6000</td>
+                            <td class="m-hide">6000</td><td class="m-hide">6000</td><td class="m-hide">6000</td>
+                            <td class="m-hide">6000</td><td class="m-hide">6000</td><td class="m-hide">6000</td>
+                            <td class="m-hide">6000</td><td class="m-hide">6000</td><td class="m-hide">6000</td>
+                            <td>72 000</td><td>7%</td>
+                        </tr>
+
+                        <!-- === ФУНКЦИОНИРОВАНИЕ === -->
+                        <tr class="cat-row">
+                            <td colspan="16">Функционирование</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Аренда офиса</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide">16000</td>
+                            <td class="m-hide">16000</td><td class="m-hide">16000</td><td class="m-hide">16000</td>
+                            <td>64 000</td><td>6%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Хостинг (Yandex Cloud)</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide">15000</td>
+                            <td class="m-hide">15000</td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td>30 000</td><td>3%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>CRM (Bitrix24)</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide">3000</td>
+                            <td class="m-hide">3000</td><td class="m-hide">3000</td><td class="m-hide"></td>
+                            <td>12 000</td><td>1%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>ЭЦП</td>
+                            <td class="m-hide">15000</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td>
+                            <td>15 000</td><td>1%</td>
+                        </tr>
+
+                        <!-- === МАРКЕТИНГ === -->
+                        <tr class="cat-row">
+                            <td colspan="16">Маркетинг</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Таргет VK / Telegram</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">10000</td>
+                            <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide"></td>
+                            <td>40 000</td><td>4%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Контент / Гайды</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                            <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide"></td>
+                            <td>25 000</td><td>2%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Продвижение TenChat</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide"></td>
+                            <td>20 000</td><td>2%</td>
+                        </tr>
+
+                        <!-- === ЮРИДИЧЕСКИЕ === -->
+                        <tr class="cat-row">
+                            <td colspan="16">Юридическое</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Регистрация ООО</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td>45 000</td><td>4%</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Товарный знак / РИД</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide">70000</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td>70 000</td><td>7%</td>
+                        </tr>
+
+                        <!-- === ПРОЧЕЕ === -->
+                        <tr class="cat-row">
+                            <td colspan="16">Прочее</td>
+                        </tr>
+
+                        <tr>
+                            <td></td><td>Закупка оборудования</td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide">43987</td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td>43 987</td><td>4%</td>
+                        </tr>
+
+                    </tbody>
+
+                    <tfoot>
+                        <tr class="total-row">
+                            <td colspan="0">ИТОГО</td>
+                            <td></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                            <td>1 043 987</td>
+                            <td>100%</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 3. ОПЕРАЦИОННЫЕ ИЗДЕРЖКИ + КРУГОВАЯ ДИАГРАММА -->
+    <section id="economy-opex" class="economy-section">
+        <div class="container-wide">
+            <div class="section-center">
+                <h2 class="reveal">Операционные издержки <span class="nowrap">(масштабирование 2027)</span></h2>
+                <p class="economy-section-lead reveal">
+                    На этапе масштабирования основную долю затрат занимают команда продаж
+                    и&nbsp;поддержки, инфраструктура и&nbsp;маркетинг. Таблица и диаграмма
+                    отражают структуру годового бюджета
+                </p>
+            </div>
+
+            <div class="economy-table-wrapper reveal">
+            <table class="economy-table">
+                <thead>
+                    <tr>
+                        <th>Категория</th>
+                        <th>Статья</th>
+
+                        <th class="m-hide">Янв</th>
+                        <th class="m-hide">Фев</th>
+                        <th class="m-hide">Мар</th>
+                        <th class="m-hide">Апр</th>
+                        <th class="m-hide">Май</th>
+                        <th class="m-hide">Июн</th>
+                        <th class="m-hide">Июл</th>
+                        <th class="m-hide">Авг</th>
+                        <th class="m-hide">Сен</th>
+                        <th class="m-hide">Окт</th>
+                        <th class="m-hide">Ноя</th>
+                        <th class="m-hide">Дек</th>
+
+                        <th>Итого</th>
+                        <th>%</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <!-- КОМАНДА -->
+                    <tr class="cat-row"><td colspan="16">Команда</td></tr>
+
+                    <tr>
+                        <td></td><td>Руководитель</td>
+                        <td class="m-hide">45000</td><td class="m-hide">45000</td><td class="m-hide">45000</td>
+                        <td class="m-hide">45000</td><td class="m-hide">45000</td><td class="m-hide">45000</td>
+                        <td class="m-hide">45000</td><td class="m-hide">45000</td><td class="m-hide">45000</td>
+                        <td class="m-hide">45000</td><td class="m-hide">45000</td><td class="m-hide">45000</td>
+                        <td>540 000</td><td>17%</td>
+                    </tr>
+
+                    <tr>
+                        <td></td><td>Администратор</td>
+                        <td class="m-hide">25000</td><td class="m-hide">25000</td><td class="m-hide">25000</td>
+                        <td class="m-hide">25000</td><td class="m-hide">25000</td><td class="m-hide">25000</td>
+                        <td class="m-hide">25000</td><td class="m-hide">25000</td><td class="m-hide">25000</td>
+                        <td class="m-hide">25000</td><td class="m-hide">25000</td><td class="m-hide">25000</td>
+                        <td>300 000</td><td>9%</td>
+                    </tr>
+
+                    <tr>
+                        <td></td><td>Менеджер по продажам</td>
+                        <td class="m-hide">30000</td><td class="m-hide">30000</td><td class="m-hide">30000</td>
+                        <td class="m-hide">30000</td><td class="m-hide">30000</td><td class="m-hide">30000</td>
+                        <td class="m-hide">30000</td><td class="m-hide">30000</td><td class="m-hide">30000</td>
+                        <td class="m-hide">30000</td><td class="m-hide">30000</td><td class="m-hide">30000</td>
+                        <td>360 000</td><td>11%</td>
+                    </tr>
+
+                    <tr>
+                        <td></td><td>Дежурный программист</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td>60 000</td><td>2%</td>
+                    </tr>
+
+                    <!-- ФУНКЦИОНИРОВАНИЕ -->
+                    <tr class="cat-row"><td colspan="16">Функционирование</td></tr>
+
+                    <tr>
+                        <td></td><td>Аренда помещения</td>
+                        <td class="m-hide">20000</td><td class="m-hide">20000</td><td class="m-hide">20000</td>
+                        <td class="m-hide">20000</td><td class="m-hide">20000</td><td class="m-hide">20000</td>
+                        <td class="m-hide">20000</td><td class="m-hide">20000</td><td class="m-hide">20000</td>
+                        <td class="m-hide">20000</td><td class="m-hide">20000</td><td class="m-hide">20000</td>
+                        <td>240 000</td><td>7%</td>
+                    </tr>
+
+                    <tr>
+                        <td></td><td>Хостинг</td>
+                        <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                        <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                        <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                        <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                        <td>120 000</td><td>4%</td>
+                    </tr>
+
+                    <tr>
+                        <td></td><td>CRM</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td>60 000</td><td>2%</td>
+                    </tr>
+
+                    <!-- МАРКЕТИНГ -->
+                    <tr class="cat-row"><td colspan="16">Маркетинг</td></tr>
+
+                    <tr>
+                        <td></td><td>Реклама VK / TG</td>
+                        <td class="m-hide">15000</td><td class="m-hide">15000</td><td class="m-hide">15000</td>
+                        <td class="m-hide">15000</td><td class="m-hide">15000</td><td class="m-hide">15000</td>
+                        <td class="m-hide">15000</td><td class="m-hide">15000</td><td class="m-hide">15000</td>
+                        <td class="m-hide">15000</td><td class="m-hide">15000</td><td class="m-hide">15000</td>
+                        <td>180 000</td><td>6%</td>
+                    </tr>
+
+                    <tr>
+                        <td></td><td>Контент и гайды</td>
+                        <td class="m-hide">50000</td><td class="m-hide">50000</td><td class="m-hide">50000</td>
+                        <td class="m-hide">50000</td><td class="m-hide">50000</td><td class="m-hide">50000</td>
+                        <td class="m-hide">50000</td><td class="m-hide">50000</td><td class="m-hide">50000</td>
+                        <td class="m-hide">50000</td><td class="m-hide">50000</td><td class="m-hide">50000</td>
+                        <td>600 000</td><td>19%</td>
+                    </tr>
+
+                    <tr>
+                        <td></td><td>Инфлюенсеры</td>
+                        <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                        <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                        <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                        <td class="m-hide">10000</td><td class="m-hide">10000</td><td class="m-hide">10000</td>
+                        <td>120 000</td><td>4%</td>
+                    </tr>
+
+                    <!-- ПРОЧЕЕ -->
+                    <tr class="cat-row"><td colspan="16">Прочее</td></tr>
+
+                    <tr>
+                        <td></td><td>Тех. поддержка</td>
+                        <td class="m-hide">15000</td><td class="m-hide">15000</td><td class="m-hide">15000</td>
+                        <td class="m-hide">15000</td><td class="m-hide">15000</td><td class="m-hide">15000</td>
+                        <td class="m-hide">15000</td><td class="m-hide">15000</td><td class="m-hide">15000</td>
+                        <td class="m-hide">15000</td><td class="m-hide">15000</td><td class="m-hide">15000</td>
+                        <td>180 000</td><td>6%</td>
+                    </tr>
+
+                    <tr>
+                        <td></td><td>Юридическое сопровождение</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td class="m-hide">5000</td><td class="m-hide">5000</td><td class="m-hide">5000</td>
+                        <td>60 000</td><td>2%</td>
+                    </tr>
+
+                    <!-- ИТОГ -->
+                    <tr class="total-row">
+                        <td colspan="0">ИТОГО</td>
+                        <td></td><td class="m-hide"></td><td class="m-hide"></td>
+                        <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                        <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                        <td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td><td class="m-hide"></td>
+                        <td>1 879 776</td>
+                        <td>100%</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 4. ФИНМОДЕЛЬ И ЭФФЕКТИВНОСТЬ -->
+    <section id="economy-metrics" class="economy-section">
+        <div class="container">
+            <div class="section-center">
+                <h2 class="reveal">Экономика проекта и показатели эффективности</h2>
+                <p class="economy-section-lead reveal">
+                    Финансовая модель построена на горизонте трёх лет и показывает,
+                    как проект выходит из зоны инвестиций к устойчивой прибыльности.
+                    Ниже&nbsp;&mdash; ключевые показатели из&nbsp;модели
+                </p>
+            </div>
+
+            <div class="economy-metrics-grid">
+                <article class="economy-metric-card reveal">
+                    <h3 class="economy-metric-title">Чистый дисконтированный доход (NPV)</h3>
+                    <p class="economy-metric-main">
+                        <span class="economy-metric-number">71&nbsp;683&nbsp;473&nbsp;₽</span><br>
+                        совокупный NPV за 2026–2028&nbsp;гг.
+                    </p>
+                    <p class="economy-metric-text">
+                        В первый год NPV остаётся чуть отрицательным
+                        (около&nbsp;−43&nbsp;тыс.&nbsp;₽)&nbsp;— это нормальная ситуация на старте.
+                        Уже к&nbsp;концу 2027&nbsp;года проект выходит в плюс
+                        (около&nbsp;1,6&nbsp;млн&nbsp;₽), а к&nbsp;2028&nbsp;году суммарный
+                        дисконтированный эффект достигает десятков миллионов рублей
+                    </p>
+                </article>
+
+                <article class="economy-metric-card reveal">
+                    <h3 class="economy-metric-title">Внутренняя норма доходности (IRR)</h3>
+                    <p class="economy-metric-main">
+                        <span class="economy-metric-number">≈&nbsp;20,2&nbsp;%</span> годовых
+                    </p>
+                    <p class="economy-metric-text">
+                        IRR на уровне ~20&nbsp;% показывает, что проект существенно
+                        опережает доходность консервативных инструментов и
+                        соответствует ожиданиям венчурных инвесторов по риск-профилю.
+                        При текущих предположениях модель остаётся устойчивой к
+                        умеренным колебаниям выручки и издержек
+                    </p>
+                </article>
+
+                <article class="economy-metric-card reveal">
+                    <h3 class="economy-metric-title">Окупаемость и индекс прибыльности (PI)</h3>
+                    <p class="economy-metric-main">
+                        <span class="economy-metric-number">18&nbsp;месяцев</span> до окупаемости
+                    </p>
+                    <p class="economy-metric-text">
+                        Общий объём инвестиций в проект составляет около
+                        1,04&nbsp;млн&nbsp;₽ в&nbsp;2026&nbsp;году и ещё 3&nbsp;млн&nbsp;₽
+                        на масштабирование в&nbsp;2027&nbsp;году. При этом индекс прибыльности
+                        (PI) к&nbsp;2028&nbsp;году превышает 1700&nbsp;%&nbsp;—
+                        на каждый вложенный рубль приходится более 17&nbsp;рублей
+                        дисконтированного дохода. Быстрая окупаемость и высокий PI
+                        делают проект привлекательным для инвестора
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<footer class="footer">
+    <div class="container footer__inner">
+        <div class="footer__left">
+            <div>ПЕРЕЕЗД.AI</div>
+            <div>Авторские права &copy; 2025</div>
+        </div>
+
+        <nav class="footer__nav">
+            <a href="index.html#top">Главная</a>
+            <a href="index.html#about">О нас</a>
+            <a href="index.html#preconditions">Предпосылки</a>
+            <a href="index.html#services">Услуги</a>
+            <a href="index.html#contact">Контакт</a>
+            <a href="economy.html" class="is-active">Экономика</a>
+
+            <div class="footer__social">
+                <a class="social-link"
+                   href="https://t.me/pereezd_ai"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="Telegram ПЕРЕЕЗД.AI">
+                    <img src="media/telegram.svg" alt="Telegram">
+                </a>
+                <a class="social-link"
+                   href="https://vk.com/pereezdai?from=groups"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="ВКонтакте ПЕРЕЕЗД.AI">
+                    <img src="media/vk.svg" alt="VK">
+                </a>
+                <a class="social-link"
+                    href="https://dzen.ru/id/692109cb19fa7e0e046d4ab3?share_to=link"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="Дзен ПЕРЕЕЗД.AI">
+                    <img src="media/dzen.svg" alt="Dzen">
+                </a>
+            </div>
+        </nav>
+    </div>
+</footer>
+
+<script src="main.js"></script>
+
+</body>
+</html>

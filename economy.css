@@ -1,0 +1,172 @@
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.product-card {
+    text-align: center;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.product-card__img img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 999px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+    margin: 0 auto 20px;
+}
+
+.product-card__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.product-card__text {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.product-card__price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2148c0;
+}
+.economy-section {
+    padding: 80px 0;
+}
+
+.economy-table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    background: white;
+}
+
+/* ТАБЛИЦА ТЕПЕРЬ ШИРЕ — МИНИМУМ 1300px */
+.economy-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1300px;
+    font-size: 14px;
+}
+
+.economy-table thead {
+    background: #f3f4f6;
+}
+
+.economy-table th,
+.economy-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.economy-table td:first-child,
+.economy-table td:nth-child(2) {
+    text-align: left;
+}
+
+.cat-row td {
+    background: #f9fafb;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.total-row td {
+    background: #eef2ff;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.nowrap {
+    white-space: nowrap;      /* запрещает перенос строки */
+    word-break: keep-all;     /* запрещает ломать слова и дефисы */
+}
+
+.container-wide {
+    width: 100%;
+    max-width: none;     /* убираем лимит */
+    padding: 0 5vw;     /* можно оставить */
+}
+
+
+/* АДАПТАЦИЯ: 
+   — ДО 1150px скрываем месяцы
+   — остаются только Статья / Итого / %
+*/
+@media (max-width: 1150px) {
+    .m-hide {
+        display: none;
+    }
+    
+    .economy-table {
+        min-width: auto;
+        font-size: 13px;
+    }
+
+    .economy-table th,
+    .economy-table td {
+        padding: 8px;
+    }
+}
+
+/* === АДАПТАЦИЯ === */
+
+/* 1) На средних экранах — сетка по 2 карточки, но с увеличенными отступами */
+@media (max-width: 1024px) {
+    .economy-products {
+        gap: 26px;
+    }
+
+    .economy-product-card {
+        padding: 24px 20px;
+    }
+}
+
+/* 2) На экранах меньше 768px — только 1 карточка на строку */
+@media (max-width: 768px) {
+    .economy-products {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+    }
+
+    .economy-product-card {
+        padding: 22px 18px;
+    }
+
+    .economy-product-thumb {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* 3) На самых маленьких (<480px) — более компактный текст и уменьшаем картинку */
+@media (max-width: 480px) {
+    .economy-product-card {
+        padding: 20px 16px;
+    }
+
+    .economy-product-thumb {
+        width: 100px;
+        height: 100px;
+    }
+
+    .economy-product-title {
+        font-size: 15px;
+    }
+
+    .economy-product-text {
+        font-size: 13px;
+    }
+
+    .product-card__price {
+        font-size: 16px;
+    }
+}
